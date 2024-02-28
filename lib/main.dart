@@ -49,7 +49,7 @@ class Navbar extends StatelessWidget {
             ),
             const SizedBox(height: 30.0),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.people),
               title: const Text('Personajes'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -58,7 +58,7 @@ class Navbar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.calculate),
+              leading: const Icon(Icons.camera),
               title: const Text('Momentos'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -67,7 +67,7 @@ class Navbar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.table_chart),
+              leading: const Icon(Icons.info),
               title: const Text('Acerca De'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -76,7 +76,7 @@ class Navbar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.table_chart),
+              leading: const Icon(Icons.video_library),
               title: const Text('Mi Vida'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -85,7 +85,7 @@ class Navbar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.table_chart),
+              leading: const Icon(Icons.business_center),
               title: const Text('Contacto'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
