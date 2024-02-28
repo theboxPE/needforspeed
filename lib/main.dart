@@ -50,27 +50,46 @@ class Navbar extends StatelessWidget {
             const SizedBox(height: 30.0),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Datos Personales'),
+              title: const Text('Personajes'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const (),
+                  builder: (context) => const Personajes(),
                 ));
               },
             ),
             ListTile(
               leading: const Icon(Icons.calculate),
-              title: const Text('Tabla'),
+              title: const Text('Momentos'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const Multiplicacion_page(),
+                  builder: (context) => const Momentos(),
                 ));
               },
-            ),ListTile(
+            ),
+            ListTile(
               leading: const Icon(Icons.table_chart),
-              title: const Text('Analisis'),
+              title: const Text('Acerca De'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const Analisis_page(),
+                  builder: (context) => const AcercaDe(),
+                ));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.table_chart),
+              title: const Text('Mi Vida'),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const MiVida(),
+                ));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.table_chart),
+              title: const Text('Contacto'),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Contacto(),
                 ));
               },
             ),
@@ -79,3 +98,4 @@ class Navbar extends StatelessWidget {
       ),
     );
   }
+}
