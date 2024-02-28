@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         drawer: const Navbar(),
         appBar: AppBar(
-          title: const Text('Presentacion'),
+          title: const Text('Need for Speed'),
         ),
         body: const Center(
           child: Text('Saludos Usuario'),
