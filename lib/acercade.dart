@@ -8,7 +8,7 @@ class AcercaDe extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Acerca de Need for Speed'),
+        title: const Text('Acerca de'),
       ),
       body: const SingleChildScrollView(
         child: Padding(

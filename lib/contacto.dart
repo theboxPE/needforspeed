@@ -44,7 +44,7 @@ class Contacto extends StatelessWidget {
               ),
               const SizedBox(height: 16.0),
               const Text(
-                'Portafolio:',
+                'GitHub:',
                 style: TextStyle(fontSize: 16.0),
               ),
               const SizedBox(height: 8.0),
