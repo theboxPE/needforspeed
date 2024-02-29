@@ -53,7 +53,7 @@ class Navbar extends StatelessWidget {
               title: const Text('Personajes'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const Personajes(),
+                  builder: (context) => Personajes(),
                 ));
               },
             ),
