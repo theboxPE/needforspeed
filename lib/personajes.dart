@@ -18,7 +18,7 @@ class Personajes extends StatelessWidget {
     Personaje(
       name: 'Julia Maddon',
       image: 'assets/julia.jpg',
-      details: 'Es una experta corredora de autos británica que se convierte en el interés amoroso de Tobey M..',
+      details: 'Es una experta corredora de autos británica que se convierte en el interés amoroso de Tobey Marshall',
     ),
     Personaje(
       name: 'Dino Brewster',
