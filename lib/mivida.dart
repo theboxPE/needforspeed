@@ -15,8 +15,7 @@ class _MiVidaState extends State<MiVida> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.asset(
-      // Replace with the URL of your video
-      'https://www.youtube.com/watch?v=OPHH18FciPo&list=RDGMEMpH8c9Zsqn6C3SI9mUjwcaw&index=2&ab_channel=GrupoNicheVEVO',
+      'assets/video.mp4',
     );
     _controller.initialize().then((_) => setState(() {}));
   }
@@ -53,7 +52,6 @@ class _MiVidaState extends State<MiVida> {
                       )
                     : const CircularProgressIndicator(),
                 const SizedBox(height: 20),
-                // Add buttons to control video playback (optional)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

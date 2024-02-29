@@ -39,16 +39,17 @@ class Navbar extends StatelessWidget {
         padding: const EdgeInsets.only(top: 30.0),
         child: Column(
           children: [
+            const CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage('assets/fp.jpg')
+            ),
             const Text(
-              'Need for Speed',
+              'Gabriel Perez Regalado',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Gabriel',
+              'perezregaladogabriel7@gmai.com',
               style: TextStyle(fontSize: 16, color: Colors.lightBlue),
-            ),
-            const im(
-              'Gabriel',
             ),
             const SizedBox(height: 30.0),
             ListTile(
