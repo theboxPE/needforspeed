@@ -9,80 +9,93 @@ class Personaje {
 }
 
 class Personajes extends StatelessWidget {
-  Personajes({super.key});
-
-  final List<Personaje> characters = [
-    Personaje(
-      name: 'Tobey Marshall',
-      image: 'assets/tobey.jpg',
-      details: 'Es un mecánico de cuello azul y expiloto de carreras experto de Mount Kisco, Nueva York, que está incriminado por un delito federal que no cometió.',
-    ),
-    Personaje(
-      name: 'Julia Maddon',
-      image: 'assets/Julia.jpg',
-      details: 'Es una experta corredora de autos británica que se convierte en el interés amoroso de Tobey Marshall',
-    ),
-    Personaje(
-      name: 'Dino Brewster',
-      image: 'assets/dino.jpg',
-      details: 'Es un ex corredor que saltó a las ligas mayores en las 500 Millas de Indianápolis y el feroz rival de Tobey, quien lo incriminó tras haber matado a su amigo Pete en medio de una carrera.',
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Character Details',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ListPersonajes(characters: characters),
-    );
-  }
-}
-
-class ListPersonajes extends StatelessWidget {
-  final List<Personaje> characters;
-
-  const ListPersonajes({super.key, required this.characters});
+  const Personajes({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Personajes'),
+        title: const Text('Momentos'),
       ),
-      body: ListView.builder(
-        itemCount: characters.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(characters[index].name),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CharacterDetailScreen(character: characters[index]),
-                ),
-              );
-            },
-          );
-        },
+      body: ListView(
+        children: <Widget>[
+          FichaPersonaje(
+            personaje: Personaje(
+              name: 'Tobey Marshall',
+              image: 'assets/tobey.jpg',
+              details: 'Es un mecánico de cuello azul y expiloto de carreras experto de Mount Kisco, Nueva York, que está incriminado por un delito federal que no cometió.',
+            ),
+          ),
+          FichaPersonaje(
+            personaje: Personaje(
+              name: 'Julia Maddon',
+              image: 'assets/Julia.jpg',
+              details: 'Es una experta corredora de autos británica que se convierte en el interés amoroso de Tobey Marshall',
+            ),
+          ),
+          FichaPersonaje(
+            personaje: Personaje(
+              name: 'Dino Brewster',
+              image: 'assets/dino.jpg',
+              details: 'Es un ex corredor que saltó a las ligas mayores en las 500 Millas de Indianápolis y el feroz rival de Tobey, quien lo incriminó tras haber matado a su amigo Pete en medio de una carrera.',
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class CharacterDetailScreen extends StatelessWidget {
-  final Personaje character;
+class FichaPersonaje extends StatelessWidget {
+  final Personaje personaje;
 
-  const CharacterDetailScreen({super.key, required this.character});
+  const FichaPersonaje({super.key, required this.personaje});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetallePersonaje(personaje: personaje),
+          ),
+        );
+      },
+      child: Card(
+        child: SizedBox(
+          height: 85,
+          width: 95,
+          child: Row(
+            children: <Widget>[
+              Image.asset(
+                personaje.image,
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(personaje.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DetallePersonaje extends StatelessWidget { 
+  final Personaje personaje;
+
+  const DetallePersonaje({super.key, required this.personaje});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(character.name),
+        title: Text(personaje.name),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -91,13 +104,13 @@ class CharacterDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                character.image,
+                personaje.image,
                 width: 200,
                 height: 200,
               ),
               const SizedBox(height: 20),
               Text(
-                character.details,
+                personaje.details,
                 textAlign: TextAlign.center,
               ),
             ],
