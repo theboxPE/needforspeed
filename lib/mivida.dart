@@ -66,7 +66,6 @@ class _MiVidaState extends State<MiVida> {
                         setState(() {});
                       },
                     ),
-                    // Add more buttons (optional)
                   ],
                 ),
               ],
