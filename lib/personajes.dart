@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class Personaje {
   String name;
   String image;
-  String detalles;
+  String details;
 
-  Personaje({required this.name, required this.image, required this.detalles});
+  Personaje({required this.name, required this.image, required this.details});
 }
 
 class Personajes extends StatelessWidget {
@@ -13,17 +13,17 @@ class Personajes extends StatelessWidget {
     Personaje(
       name: 'Tobey Marshall',
       image: 'assets/tobey.jpg',
-      detalles: 'Es un mecánico de cuello azul y expiloto de carreras experto de Mount Kisco, Nueva York, que está incriminado por un delito federal que no cometió.',
+      details: 'Es un mecánico de cuello azul y expiloto de carreras experto de Mount Kisco, Nueva York, que está incriminado por un delito federal que no cometió.',
     ),
     Personaje(
       name: 'Julia Maddon',
       image: 'assets/julia.jpg',
-      detalles: 'Es una experta corredora de autos británica que se convierte en el interés amoroso de Tobey M..',
+      details: 'Es una experta corredora de autos británica que se convierte en el interés amoroso de Tobey M..',
     ),
     Personaje(
       name: 'Dino Brewster',
       image: 'assets/dino.jpg',
-      detalles: 'Es un ex corredor que saltó a las ligas mayores en las 500 Millas de Indianápolis y el feroz rival de Tobey, quien lo incriminó tras haber matado a su amigo Pete en medio de una carrera.',
+      details: 'Es un ex corredor que saltó a las ligas mayores en las 500 Millas de Indianápolis y el feroz rival de Tobey, quien lo incriminó tras haber matado a su amigo Pete en medio de una carrera.',
     ),
   ];
 
@@ -95,7 +95,7 @@ class CharacterDetailScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                character.detalles,
+                character.details,
                 textAlign: TextAlign.center,
               ),
             ],
