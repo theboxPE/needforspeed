@@ -19,7 +19,7 @@ class Personajes extends StatelessWidget {
     ),
     Personaje(
       name: 'Julia Maddon',
-      image: 'assets/julia.jpg',
+      image: 'assets/Julia.jpg',
       details: 'Es una experta corredora de autos británica que se convierte en el interés amoroso de Tobey Marshall',
     ),
     Personaje(
@@ -86,7 +86,7 @@ class CharacterDetailScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(80.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[

@@ -40,12 +40,15 @@ class Navbar extends StatelessWidget {
         child: Column(
           children: [
             const Text(
-              'Presentacion',
+              'Need for Speed',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const Text(
               'Gabriel',
               style: TextStyle(fontSize: 16, color: Colors.lightBlue),
+            ),
+            const im(
+              'Gabriel',
             ),
             const SizedBox(height: 30.0),
             ListTile(
