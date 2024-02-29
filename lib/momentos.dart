@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Momentos extends StatelessWidget {
   const Momentos({super.key});
@@ -14,8 +15,8 @@ class Momentos extends StatelessWidget {
           FichaProducto(
             name: 'Muerte de ',
             image: 'assets/accidente.jpg',
-            descripcion: 'Detalle de los momentos de Juan',
-            video: 'https://www.youtube.com/watch?v=video_id_1',
+            descripcion: 'Momento en el que pasa el accidente del koenigsegg agera blanco en el que iba ',
+            video: 'www.youtube.com/embed/1wX22heflW4?si=wlo45J0snhYAcY8T',
           ),
           FichaProducto(
             name: 'exhibición del ford mustang',
