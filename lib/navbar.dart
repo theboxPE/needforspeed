@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' show AssetImage, BuildContext, CircleAvatar, Colors, Column, Drawer, EdgeInsets, FontWeight, Icon, Icons, ListTile, MaterialPageRoute, Navigator, Padding, SizedBox, StatelessWidget, Text, TextStyle, Widget;
 import 'package:needforspeed/personajes.dart';
-
 import 'acercade.dart';
 import 'contacto.dart';
 import 'mivida.dart';
