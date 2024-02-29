@@ -9,6 +9,8 @@ class Personaje {
 }
 
 class Personajes extends StatelessWidget {
+  Personajes({super.key});
+
   final List<Personaje> characters = [
     Personaje(
       name: 'Tobey Marshall',
