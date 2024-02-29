@@ -12,22 +12,22 @@ class Momentos extends StatelessWidget {
       body: ListView(
         children: const <Widget>[
           FichaProducto(
-            nombre: 'Muerte de ',
-            imagen: 'assets/accidente.jpg',
+            name: 'Muerte de ',
+            image: 'assets/accidente.jpg',
             descripcion: 'Detalle de los momentos de Juan',
-            videoUrl: 'https://www.youtube.com/watch?v=video_id_1',
+            video: 'https://www.youtube.com/watch?v=video_id_1',
           ),
           FichaProducto(
-            nombre: 'Pedro',
-            imagen: 'assets/foto_pedro.jpg',
-            descripcion: 'Detalle de los momentos de Pedro',
-            videoUrl: 'https://www.youtube.com/watch?v=video_id_2',
+            name: 'exhibición del ford mustang',
+            image: 'assets/vehiculo.jpg',
+            descripcion: 'Es cuando se esta mostrando el vehiculo luego de una reparacion y Julia dice todos los detalles del coche sin verlo luego de modificado',
+            video: 'https://www.youtube.com/watch?v=video_id_2',
           ),
           FichaProducto(
-            nombre: 'Carlos',
-            imagen: 'assets/foto_carlos.jpg',
-            descripcion: 'Detalle de los momentos de Carlos',
-            videoUrl: 'https://www.youtube.com/watch?v=video_id_3',
+            name: 'La carrera de Leon',
+            image: 'assets/rojo.jpg',
+            descripcion: 'Es cuando tobey mashall se enfrenta a dino el bambino con el carro que el mismo dino escondio luego del accidente de ',
+            video: 'https://www.youtube.com/watch?v=video_id_3',
           ),
         ],
       ),
@@ -36,17 +36,17 @@ class Momentos extends StatelessWidget {
 }
 
 class FichaProducto extends StatelessWidget {
-  final String nombre;
+  final String name;
   final String descripcion;
-  final String imagen;
-  final String videoUrl;
+  final String image;
+  final String video;
 
   const FichaProducto({
     super.key,
-    required this.nombre,
+    required this.name,
     required this.descripcion,
-    required this.imagen,
-    required this.videoUrl,
+    required this.image,
+    required this.video,
   });
 
   @override
@@ -57,10 +57,10 @@ class FichaProducto extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetalleMomento(
-              nombre: nombre,
+              nombre: name,
               descripcion: descripcion,
-              imagen: imagen,
-              videoUrl: videoUrl,
+              imagen: image,
+              videoUrl: video,
             ),
           ),
         );
@@ -72,14 +72,14 @@ class FichaProducto extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Image.asset(
-                imagen,
+                image,
                 width: 60,
                 height: 60,
                 fit: BoxFit.cover,
               ),
               const SizedBox(width: 10),
               Expanded(
-                child: Text(nombre, style: const TextStyle(fontWeight: FontWeight.bold)),
+                child: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
               ),
             ],
           ),
