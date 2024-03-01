@@ -17,32 +17,37 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Need for Speed'),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              '¡Resumen de la pelicula Need for Speed!',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20), 
-            Center(
-              child: YoutubePlayer(
-                controller: YoutubePlayerController(
-                  initialVideoId: 'uWfwV4-TC8E', 
-                  flags: const YoutubePlayerFlags(
-                    autoPlay: true,
-                    mute: false,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '¡Resumen de la pelicula Need for Speed!',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                showVideoProgressIndicator: true,
-                progressIndicatorColor: Colors.amber,
-              ),
+                const SizedBox(height: 20), 
+                Center(
+                  child: YoutubePlayer(
+                    controller: YoutubePlayerController(
+                      initialVideoId: 'uWfwV4-TC8E', 
+                      flags: const YoutubePlayerFlags(
+                        autoPlay: true,
+                        mute: false,
+                      ),
+                    ),
+                    showVideoProgressIndicator: true,
+                    progressIndicatorColor: Colors.amber,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          )
+        )
       )
     );
   }
