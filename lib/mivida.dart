@@ -39,7 +39,7 @@ class _MiVidaState extends State<MiVida> {
           child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
-              children: [
+              children: <Widget>[
                 const Text(
                   'Video explicando mi opinion de por que me gusta la pelicula',
                   style: TextStyle(fontSize: 18),
