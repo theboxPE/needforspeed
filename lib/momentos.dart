@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Momentos extends StatelessWidget {
   const Momentos({super.key});
@@ -11,20 +11,23 @@ class Momentos extends StatelessWidget {
         title: const Text('Momentos'),
       ),
       body: ListView(
-        children: const <Widget>[
+        children: const [
           FichaMomento(
+            index: 0,
             name: 'Muerte de pete',
             image: 'assets/accidente.jpg',
             descripcion: 'Momento en el que pasa el accidente del koenigsegg agera blanco en el que iba ',
             video: 'https://www.youtube.com/watch?v=1wX22heflW4',
           ),
           FichaMomento(
+            index: 1,
             name: 'exhibición del ford mustang',
             image: 'assets/vehiculo.jpg',
             descripcion: 'Es cuando se esta mostrando el vehiculo luego de una reparacion y Julia dice todos los detalles del coche sin verlo luego de modificado',
             video: 'https://www.youtube.com/watch?v=YrRqYPWHgK8',
           ),
           FichaMomento(
+            index: 2,
             name: 'La carrera de Leon',
             image: 'assets/rojo.jpg',
             descripcion: 'Es cuando tobey mashall se enfrenta a dino el bambino con el carro que el mismo dino escondio luego del accidente de pete',
@@ -37,6 +40,7 @@ class Momentos extends StatelessWidget {
 }
 
 class FichaMomento extends StatelessWidget {
+  final int index;
   final String name;
   final String descripcion;
   final String image;
@@ -44,6 +48,7 @@ class FichaMomento extends StatelessWidget {
 
   const FichaMomento({
     super.key, 
+    required this.index,
     required this.name,
     required this.descripcion,
     required this.image,
@@ -58,10 +63,10 @@ class FichaMomento extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetalleMomento(
+              index: index,
               nombre: name,
               descripcion: descripcion,
               imagen: image,
-              videoUrl: video,
             ),
           ),
         );
@@ -91,21 +96,27 @@ class FichaMomento extends StatelessWidget {
 }
 
 class DetalleMomento extends StatelessWidget {
+  final int index;
   final String nombre;
   final String descripcion;
   final String imagen;
-  final String videoUrl;
+  final List<String> videos = [
+    'https://www.youtube.com/watch?v=1wX22heflW4',
+    'https://www.youtube.com/watch?v=YrRqYPWHgK8',
+    'https://www.youtube.com/watch?v=UQt34_Yfywk',
+  ];
 
-  const DetalleMomento({
+  DetalleMomento({
     super.key, 
+    required this.index,
     required this.nombre,
     required this.descripcion,
     required this.imagen,
-    required this.videoUrl,
   });
 
   @override
   Widget build(BuildContext context) {
+    final String videoUrl = videos[index];
     return Scaffold(
       appBar: AppBar(
         title: Text(nombre),
@@ -133,7 +144,7 @@ class DetalleMomento extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => VideoPlayerWidget(videoUrl: videoUrl),
+                  builder: (context) => YoutubePlayerWidget(videoUrl: videoUrl),
                 ),
               );
             },
@@ -145,53 +156,61 @@ class DetalleMomento extends StatelessWidget {
   }
 }
 
-class VideoPlayerWidget extends StatefulWidget {
-  const VideoPlayerWidget({super.key, required this.videoUrl});
-
+class YoutubePlayerWidget extends StatefulWidget {
   final String videoUrl;
 
+  const YoutubePlayerWidget({super.key, required this.videoUrl});
+
   @override
-  State<VideoPlayerWidget> createState() => VideoPlayerWidgetState();
+  State<YoutubePlayerWidget> createState() => _YoutubePlayerWidgetState();
 }
 
-class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
-  late VideoPlayerController _videoPlayerController;
-  late Future<void> _initializeVideoPlayerFuture;
+class _YoutubePlayerWidgetState extends State<YoutubePlayerWidget> {
+  late YoutubePlayerController _controller;
 
   @override
   void initState() {
-    _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
-    _initializeVideoPlayerFuture = _videoPlayerController.initialize().then((_) {
-      _videoPlayerController.play();
-      _videoPlayerController.setLooping(true);
-      setState(() {});
-    });
-
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.videoUrl)!,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeVideoPlayerFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return AspectRatio(
-            aspectRatio: _videoPlayerController.value.aspectRatio,
-            child: VideoPlayer(_videoPlayerController),
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('YouTube Video'),
+      ),
+      body: Center(
+        child: YoutubePlayer(
+          controller: _controller,
+          showVideoProgressIndicator: true,
+          onReady: () {
+            // Implement your custom logic
+          },
+          onEnded: (metaData) {
+            // Implement your custom logic
+          },
+        ),
+      ),
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 }
+
+void main() {
+  runApp(const MaterialApp(
+    home: Momentos(),
+  ));
+}
+
