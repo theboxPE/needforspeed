@@ -28,49 +28,44 @@ class _MiVidaState extends State<MiVida> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Mi vida',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Video'),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
-              children: <Widget>[
-                const Text(
-                  'Video explicando mi opinion de por que me gusta la pelicula',
-                  style: TextStyle(fontSize: 18),
-                ),
-                const SizedBox(height: 20),
-                _controller.value.isInitialized
-                    ? AspectRatio(
-                        aspectRatio: _controller.value.aspectRatio,
-                        child: VideoPlayer(_controller),
-                      )
-                    : const CircularProgressIndicator(),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-                      ),
-                      onPressed: () {
-                        _controller.value.isPlaying
-                            ? _controller.pause()
-                            : _controller.play();
-                        setState(() {});
-                      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Video'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            children: <Widget>[
+              const Text(
+                'Video explicando mi opinión de por qué me gusta la película',
+                style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 20),
+              _controller.value.isInitialized
+                  ? AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    )
+                  : const CircularProgressIndicator(),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
                     ),
-
-                  ],
-                ),
-              ],
-            ),
+                    onPressed: () {
+                      _controller.value.isPlaying
+                          ? _controller.pause()
+                          : _controller.play();
+                      setState(() {});
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
